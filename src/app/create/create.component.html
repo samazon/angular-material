@@ -1,0 +1,20 @@
+<mat-card class="card-body">
+  <form class="example-form" [formGroup]="addPostFormGroup" (submit)="onSubmit()">
+    <mat-form-field>
+      <input matInput placeholder="Title" formControlName="title">
+      <mat-error *ngIf="addPostFormGroup.get('title').hasError('required')">
+        <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <input matInput placeholder="Body" formControlName="body">
+      <mat-error *ngIf="addPostFormGroup.get('body').hasError('required')">
+        <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button color="primary">Save</button>
+    <button mat-raised-button routerLink="/index">Cancel</button>
+  </form>
+</mat-card>
