@@ -12,7 +12,7 @@ declare var $: any;
 })
 export class EditComponent implements OnInit, OnDestroy {
 
-  private post;
+  post;
   postId;
   postEditForm: FormGroup;
 
@@ -55,7 +55,7 @@ export class EditComponent implements OnInit, OnDestroy {
       // console.log(response);
       if (response.status == 200) {
         this.toastr.success('Deleted', 'Post deleted successfully');
-        $('#your-modal-id').modal('hide');
+        $('#exampleModalCenter').modal('hide');
         $('body').removeClass('modal-open');
         $('.modal-backdrop').remove();
         this.router.navigate(['/index']);

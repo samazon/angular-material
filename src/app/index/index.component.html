@@ -1,42 +1,51 @@
-<mat-card>
-  <div class="example-header">
-    <mat-form-field>
-      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-    </mat-form-field>
+<div class="container">
+  <div id="header">
+    <h1 class="display-6">Angular 5, Angular Material, Bootstrap</h1>
+    <p class="text-muted">This sample application demonstrates the Angular API Communication, Routing, Reactive Forms, Reactive Forms Validations,
+      Reading Responses, Angular Material Design Components, Bootstrap 4, jQuery, Table Pagnination, Filer, Clickable Rows
+      and more. The example site uses the folloing resouses</p>
+    <p>API Resource:
+      <a href="https://jsonplaceholder.typicode.com">https://jsonplaceholder.typicode.com</a>
+    </p>
+    <p>Git:
+      <a href="https://github.com/samazon/angular-material">https://github.com/samazon/angular-material</a>
+    </p>
+    <div>
+      <button mat-raised-button color="primary" routerLink="/create">Add New Post</button>
+      <button mat-raised-button color="accent" routerLink="/validations">Form Validations</button>
+    </div>
   </div>
-<div class="example-container mat-elevation-z8">
+  <div class="example-container mat-elevation-z8">
+    <div class="example-header">
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+      </mat-form-field>
+    </div>
+    <mat-table [dataSource]="dataSource" class="clickable-rows" matSort>
 
-  <mat-table [dataSource]="dataSource" class="clickable-rows" matSort>
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+      </ng-container>
 
-    <!-- ID Column -->
-    <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
-    </ng-container>
+      <!-- Title Column -->
+      <ng-container matColumnDef="title">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Title </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.title}} </mat-cell>
+      </ng-container>
 
-    <!-- Progress Column -->
-    <ng-container matColumnDef="title">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Title </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.title}} </mat-cell>
-    </ng-container>
+      <!-- Body Column -->
+      <ng-container matColumnDef="body">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Body </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.body}} </mat-cell>
+      </ng-container>
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="body">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Body </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.body}} </mat-cell>
-    </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClick($event, row)">
+      </mat-row>
+    </mat-table>
 
-    <!-- Color Column -->
-    <!-- <ng-container matColumnDef="color">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Color </mat-header-cell>
-      <mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.color}} </mat-cell>
-    </ng-container> -->
-
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClick($event, row)">
-    </mat-row>
-  </mat-table>
-
-  <mat-paginator #MatPaginator [length]="resultsLength" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    <mat-paginator #MatPaginator [length]="resultsLength" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  </div>
 </div>
-</mat-card>

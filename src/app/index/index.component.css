@@ -32,3 +32,9 @@ mat-header-cell.mat-header-cell.cdk-column-title.mat-column-title.ng-star-insert
 mat-cell.mat-cell.cdk-column-title.mat-column-title.ng-star-inserted {
   max-width: 300px;
 }
+.display-6 {
+  margin-top: 20px;
+}
+#header {
+  margin-bottom: 20px;
+}

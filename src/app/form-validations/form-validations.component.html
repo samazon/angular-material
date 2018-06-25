@@ -1,39 +1,40 @@
 <mat-card class="card-body">
-<form class="example-form" [formGroup]="form">
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Email"  formControlName = "email">
-    <mat-error *ngIf="form.get('email').hasError('required')">
-      Email is <strong>required</strong>
-    </mat-error>
-    <mat-error *ngIf="form.get('email').hasError('pattern')">
-      Invalid email
-    </mat-error>
-  </mat-form-field>
-  
-  <mat-form-field class="example-full-width">
-    <mat-hint>0/00/+92 (Any format)</mat-hint>
-    <input matInput placeholder="Phone" formControlName = "phone">
-    <mat-error *ngIf="form.get('phone').hasError('required')">
-      Phone is
-      <strong>required</strong>
-    </mat-error>
-    <mat-error *ngIf="form.get('phone').hasError('pattern')">
-      Invalid number
-    </mat-error>
-  </mat-form-field>
-  
-  <span></span>
-  <mat-form-field>
-    <input matInput [matDatepicker]="picker" placeholder="Choose a date">
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
-  <br>
-  <mat-form-field>
-    <mat-select placeholder="Countries">
-      <mat-option>None</mat-option>
-      <mat-option *ngFor="let country of countries" [value]="country">{{country.name}}</mat-option>
-    </mat-select>
-  </mat-form-field>
-</form>
+  <form class="example-form" [formGroup]="form">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Email"  formControlName = "email">
+      <mat-error *ngIf="form.get('email').hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+      <mat-error *ngIf="form.get('email').hasError('pattern')">
+        Invalid email
+      </mat-error>
+    </mat-form-field>
+    
+    <mat-form-field class="example-full-width">
+      <mat-hint>0/00/+92 (Any format)</mat-hint>
+      <input matInput placeholder="Phone" formControlName = "phone">
+      <mat-error *ngIf="form.get('phone').hasError('required')">
+        Phone is
+        <strong>required</strong>
+      </mat-error>
+      <mat-error *ngIf="form.get('phone').hasError('pattern')">
+        Invalid number
+      </mat-error>
+    </mat-form-field>
+    
+    <span></span>
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <mat-select placeholder="Countries">
+        <mat-option>None</mat-option>
+        <mat-option *ngFor="let country of countries" [value]="country">{{country.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+  <a routerLink="/index">Go Back</a>
 </mat-card>
