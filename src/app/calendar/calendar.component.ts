@@ -8,18 +8,23 @@ declare var $: any;
 })
 export class CalendarComponent implements OnInit {
 
+  //Getting references to the html elements to retrieve input values
   @ViewChild('date') date;
   @ViewChild('title') title;
   @ViewChild('start') start;
   @ViewChild('end') end;
 
+  //FormGroup 
   eventFormGroup: FormGroup;
 
+  //Assumption of Data Coming back from the API
   eventsList = [{"date":"12/12/19","events":[{"title":"Event Title 1","start":"10 AM","end":"11 AM"},{"title":"Event Title 2","start":"11 AM","end":"12 PM"}]},{"date":"13/12/19","events":[{"title":"Event Title 1","start":"10 AM","end":"11 AM"},{"title":"Event Title 2","start":"12 PM","end":"01 PM"},{"title":"Event Title 3","start":"03 PM","end":"04 PM"}]},{"date":"14/12/19","events":[{"title":"Event Title 1","start":"09 AM","end":"10 AM"},{"title":"Event Title 2","start":"10 AM","end":"11 AM"}]},{"date":"15/12/19","events":[{"title":"Event Title 1","start":"10 AM","end":"11 AM"},{"title":"Event Title 2","start":"11 AM","end":"12 PM"}]},{"date":"16/12/19","events":[{"title":"Event Title 1","start":"09 AM","end":"10 AM"},{"title":"Event Title 2","start":"11 AM","end":"12 PM"}]},{"date":"17/12/19","events":[{"title":"Event Title 1","start":"09 AM","end":"10 AM"},{"title":"Event Title 2","start":"11 AM","end":"12 PM"},{"title":"Event Title 3","start":"11 AM","end":"12 PM"}]}];
+
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     
+    //DateTimePicking with Library
     $('#date-picker').datetimepicker({
       format: 'L'
     });
@@ -30,7 +35,7 @@ export class CalendarComponent implements OnInit {
       format: 'LT'
     });
 
-
+    // Initializing the formGroup
     this.eventFormGroup = this.formBuilder.group({
       date: [''],
       events: this.formBuilder.group({
@@ -41,6 +46,7 @@ export class CalendarComponent implements OnInit {
     });
   }
   
+  // Submitting the formGroup
   save(){
     console.log(this.date.nativeElement.value);
     
@@ -53,6 +59,5 @@ export class CalendarComponent implements OnInit {
       }
     });
     console.log(this.eventFormGroup.value);
-
   }
 }
