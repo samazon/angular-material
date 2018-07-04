@@ -1,0 +1,61 @@
+<div class="container">
+   <mat-card>
+    <p class="h4">Create an Event</p>
+    <p class="text-muted">The following form is using ReactiveForm approach, with no validation rules for now. MomentJs library for date and time processing. All the utitlites are included with cdn so to avoid any package errors, however there are packages which are included with npm as well.</p>
+    <p>The application also show CRUD operations using this api <a href="https://jsonplaceholder.typicode.com">https://jsonplaceholder.typicode.com</a></p>
+    <p>Source Code: <a href="https://github.com/samazon/angular-material">https://github.com/samazon/angular-material</a></p>
+    <div class="row">
+        <div class="col-sm-6">
+          <form action="" [formGroup]="eventFormGroup">
+            <div class="form-group">
+                <div class="input-group date mb-3" id="date-picker" data-target-input="nearest">
+                  <div class="input-group-prepend" data-target="#date-picker" data-toggle="datetimepicker">
+                      <div class="input-group-text"><i class="fas fa-calendar"></i></div>
+                  </div>
+                  <input type="text" #date placeholder="Pick Date" class="form-control datetimepicker-input" data-target="#date-picker" data-toggle="datetimepicker" formControlName="date"/>
+                </div>
+                <div formGroupName="events">
+                  <div class="input-group date mb-3" id="title">
+                      <div class="input-group-prepend">
+                          <div class="input-group-text"><i class="fas fa-pen"></i></div>
+                      </div>
+                      <input type="text" #title  placeholder="Title" class="form-control" formControlName="title"/>
+                  </div>
+                  <div class="input-group date mb-3" id="start-time" data-target-input="nearest">
+                      <div class="input-group-prepend" data-target="#start-time" data-toggle="datetimepicker">
+                          <div class="input-group-text"><i class="far fa-clock"></i></div>
+                      </div>
+                      <input type="text" #start  placeholder="Start Time" class="form-control datetimepicker-input" data-target="#start-time" data-toggle="datetimepicker" formControlName="start"/>
+                  </div>
+                  <div class="input-group date mb-3" id="end-time" data-target-input="nearest">
+                    <div class="input-group-prepend" data-target="#end-time" data-toggle="datetimepicker">
+                      <div class="input-group-text"><i class="far fa-clock"></i></div>
+                    </div>
+                    <input type="text"  #end placeholder="End Time" class="form-control datetimepicker-input" data-target="#end-time" data-toggle="datetimepicker" formControlName="end"/>
+                  </div>
+                </div>
+            </div>
+            <div>
+              <button class="btn btn-primary" (click)="save()">Create Event</button>
+            </div>
+          </form>
+        </div>
+    </div>
+    <div>
+      <br>
+        Value: 
+      <pre><code>{{eventFormGroup.value | json}}</code></pre>
+    </div>
+    </mat-card>
+    <p class="h4">Events Schedule</p>
+    <p class="text-muted">These cards are displaying the data from Array[] named <em style="color:red;">eventsList</em> defined in <strong>calendar.component.ts</strong>. This can be presumed to be the data coming from an <em style="color: blueviolet">API</em>.</p>
+    <p class="text-muted">The following example shows Itteration over Array of Arrays using <em>ngFor</em> directive, Check <strong>calendar.component.html</strong> form more detailed view of code.</p>
+    <div class="d-flex flex-wrap">
+      <div class="card" style="width: 18rem;" *ngFor="let e of eventsList let i=index"> 
+        <div class="card-body">
+          <h5 class="card-title">{{e.date}}</h5>
+          <p class="card-text" *ngFor="let t of eventsList[i].events"><strong>{{t.title}}</strong> - ({{t.start}} to {{t.end}})</p>
+        </div>
+      </div>
+    </div>
+</div>

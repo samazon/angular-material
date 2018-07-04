@@ -17,9 +17,11 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { FormValidationsComponent } from './form-validations/form-validations.component';
+import { CalendarComponent } from './calendar/calendar.component';
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: 'index', pathMatch: 'full' },
+  { path: '', redirectTo: 'calendar', pathMatch: 'full' },
+  { path: 'calendar', component: CalendarComponent },
   { path: 'index', component: IndexComponent },
   { path: 'create', component: CreateComponent },
   { path: 'edit/:id', component: EditComponent },
@@ -33,7 +35,8 @@ const appRoutes: Routes = [
     IndexComponent,
     CreateComponent,
     EditComponent,
-    FormValidationsComponent
+    FormValidationsComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,
